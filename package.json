@@ -110,7 +110,7 @@
 		"dev:exporter": "rollup -c packages/exporter/rollup.config.js -w",
 		"dev:importer": "rollup -c packages/importer/rollup.config.js -w",
 		"update-version": "tsm ./update-version.ts",
-		"clear": "rm -rf ./angular ./adapters ./cjs ./cli ./detectors ./dist ./esm ./exporter ./formatters ./importer ./react ./rollup ./schema ./svelte ./types ./webpack ./temp-output",
+		"clear": "rm -rf ./angular ./adapters ./cjs ./cli ./detectors ./dist ./esm ./exporter ./formatters ./importer ./react ./rollup ./schema ./svelte ./types ./vue ./webpack ./temp-output",
 		"-- TEST ------------------------------------------------": "",
 		"lint": "eslint packages --cache",
 		"lint:fix": "eslint packages --cache --fix",
