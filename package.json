@@ -57,6 +57,10 @@
 			"import": "./svelte/svelte-store.mjs",
 			"require": "./svelte/svelte-store.cjs"
 		},
+		"./vue/vue-adapter": {
+			"import": "./svelte/svelte-store.mjs",
+			"require": "./svelte/svelte-store.cjs"
+		},
 		"./rollup/*": "./rollup/*.js",
 		"./webpack/*": "./webpack/*.js",
 		"./esm/*": {
@@ -90,6 +94,7 @@
 		"/schema",
 		"/svelte",
 		"/types",
+		"/vue",
 		"/webpack"
 	],
 	"scripts": {
@@ -97,6 +102,10 @@
 		"dev:cli": "rollup -c packages/cli/rollup.config.js -w",
 		"dev:rollup": "rollup -c packages/rollup-plugin/rollup.config.js -w",
 		"dev:webpack": "rollup -c packages/webpack-plugin/rollup.config.js -w",
+		"dev:adapter-angular": "rollup -c packages/adapter-angular/rollup.config.js -w",
+		"dev:adapter-react": "rollup -c packages/adapter-react/rollup.config.js -w",
+		"dev:adapter-svelte": "rollup -c packages/adapter-svelte/rollup.config.js -w",
+		"dev:adapter-vue": "rollup -c packages/adapter-vue/rollup.config.js -w",
 		"dev:adapters": "rollup -c packages/adapters/rollup.config.js -w",
 		"dev:exporter": "rollup -c packages/exporter/rollup.config.js -w",
 		"dev:importer": "rollup -c packages/importer/rollup.config.js -w",
@@ -111,9 +120,12 @@
 		"test:size": "size-limit",
 		"-- BUILD -----------------------------------------------": "",
 		"build": "npm run clear && npm run update-version && concurrently -n w: npm:build:* && npm run link-typedefinitions && npm run fix-imports",
-		"build:adapters": "rollup -c packages/adapters/rollup.config.js && tsc -p packages/adapters/tsconfig.json --emitDeclarationOnly",
-		"build:angular": "rollup -c packages/adapter-angular/rollup.config.js && tsc -p packages/adapter-angular/tsconfig.json --emitDeclarationOnly",
+		"build:adapter-angular": "rollup -c packages/adapter-angular/rollup.config.js && tsc -p packages/adapter-angular/tsconfig.json --emitDeclarationOnly",
+		"build:adapter-react": "rollup -c packages/adapter-react/rollup.config.js && tsc -p packages/adapter-react/tsconfig.json --emitDeclarationOnly",
+		"build:adapter-svelte": "rollup -c packages/adapter-svelte/rollup.config.js && tsc -p packages/adapter-svelte/tsconfig.json --emitDeclarationOnly",
+		"build:adapter-vue": "rollup -c packages/adapter-vue/rollup.config.js && tsc -p packages/adapter-vue/tsconfig.json --emitDeclarationOnly",
 		"build:browser": "rollup -c packages/browser/rollup.config.js",
+		"build:adapters": "rollup -c packages/adapters/rollup.config.js && tsc -p packages/adapters/tsconfig.json --emitDeclarationOnly",
 		"build:cjs": "tsc -p packages/core/tsconfig-cjs.json && ts-node ./packages/core/rename-cjs.ts",
 		"build:detectors": "rollup -c packages/locale-detector/rollup.config.js && tsc -p packages/locale-detector/tsconfig.json --emitDeclarationOnly && node --loader ts-node/esm ./packages/locale-detector/generateTreeShakableIndexFile.ts",
 		"build:esm": "tsc -p packages/core/tsconfig-esm.json && ts-node ./packages/core/rename-esm.ts",
@@ -121,9 +133,7 @@
 		"build:formatters": "rollup -c packages/formatters/rollup.config.js && tsc -p packages/formatters/tsconfig.json --emitDeclarationOnly && node --loader ts-node/esm ./packages/formatters/generateTreeShakableIndexFile.ts",
 		"build:cli": "rollup -c packages/cli/rollup.config.js",
 		"build:importer": "rollup -c packages/importer/rollup.config.js && tsc -p packages/importer/tsconfig.json --emitDeclarationOnly",
-		"build:react": "rollup -c packages/adapter-react/rollup.config.js && tsc -p packages/adapter-react/tsconfig.json --emitDeclarationOnly",
 		"build:rollup": "rollup -c packages/rollup-plugin/rollup.config.js && tsc -p packages/rollup-plugin/tsconfig.json --emitDeclarationOnly",
-		"build:svelte": "rollup -c packages/adapter-svelte/rollup.config.js && tsc -p packages/adapter-svelte/tsconfig.json --emitDeclarationOnly",
 		"build:webpack": "rollup -c packages/webpack-plugin/rollup.config.js && tsc -p packages/webpack-plugin/tsconfig.json --emitDeclarationOnly",
 		"fix-imports": "ts-node ./packages/fix-imports.ts",
 		"link-typedefinitions": "ts-node ./packages/link-typedefinitions.ts",
@@ -145,6 +155,7 @@
 		"@types/node": "^16.11.7",
 		"@types/prompts": "^2.0.14",
 		"@types/react": "^17.0.34",
+		"@types/vue": "^2.0.0",
 		"@types/webpack": "^5.28.0",
 		"@typescript-eslint/eslint-plugin": "^5.3.1",
 		"@typescript-eslint/parser": "^5.3.1",
@@ -178,6 +189,7 @@
 		"typescript": "^4.4.4",
 		"typescript-json-schema": "^0.51.0",
 		"uvu": "^0.5.2",
+		"vue": "^2.6.14",
 		"watchlist": "^0.3.1"
 	},
 	"peerDependencies": {

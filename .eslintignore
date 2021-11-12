@@ -11,6 +11,7 @@ node_modules
 /react
 /rollup
 /svelte
+/vue
 /webpack
 rollup.config.js
 /packages/generator/test/generated
