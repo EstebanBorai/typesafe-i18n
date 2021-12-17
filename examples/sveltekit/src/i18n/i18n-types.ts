@@ -15,6 +15,14 @@ export type Translation = {
 	 * @param {string} name
 	 */
 	'HI': RequiredParams1<'name'>
+	/**
+	 * Copyright
+	 */
+	'COPYRIGHT': string
+	/**
+	 * My Application Name
+	 */
+	'MY_APPLICATION_NAME': string
 }
 
 export type TranslationFunctions = {
@@ -22,6 +30,14 @@ export type TranslationFunctions = {
 	 * Hi {name}!
 	 */
 	'HI': (arg: { name: string }) => LocalizedString
+	/**
+	 * Copyright
+	 */
+	'COPYRIGHT': () => LocalizedString
+	/**
+	 * My Application Name
+	 */
+	'MY_APPLICATION_NAME': () => LocalizedString
 }
 
 export type Formatters = {}

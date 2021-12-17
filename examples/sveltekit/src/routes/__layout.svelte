@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Locales } from '$i18n/i18n-types'
 	import { baseLocale, locales } from '$i18n/i18n-util'
-	import { initI18n } from '$i18n/i18n-svelte'
+	import LL, { initI18n } from '$i18n/i18n-svelte'
 	import type { Load } from '@sveltejs/kit'
 	import { replaceLocaleInUrl } from '../utils'
 
@@ -40,4 +40,10 @@
 
 <LocaleSwitcher />
 
+<header>
+	<h1>{LL.MY_APPLICATION_NAME()}</h1>
+</header>
 <slot />
+<footer>
+	<small>{LL.COPYRIGHT()}</small>
+</footer>
